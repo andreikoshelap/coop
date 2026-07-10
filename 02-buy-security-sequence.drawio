@@ -1,0 +1,80 @@
+<mxfile host="app.diagrams.net" agent="architecture-homework" version="24.0.0">
+  <diagram id="buy-security" name="Buy security — saga">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1250" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="a1" value="Channels&#xa;&lt;font style=&quot;font-size:10px&quot;&gt;app / internet bank&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="20" y="24" width="150" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Order service&#xa;&lt;font style=&quot;font-size:10px&quot;&gt;saga orchestrator&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="225" y="24" width="150" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="Contract service&#xa;&lt;font style=&quot;font-size:10px&quot;&gt;agreement, MiFID profile&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="425" y="24" width="150" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="Bank core&#xa;&lt;font style=&quot;font-size:10px&quot;&gt;Funds API + holds&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="625" y="24" width="150" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="Broker gateway&#xa;&lt;font style=&quot;font-size:10px&quot;&gt;ACL → external broker&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="825" y="24" width="150" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="Portfolio service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="24" width="150" height="48" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l1" style="html=1;dashed=1;endArrow=none;strokeColor=#b3b3b3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="95" y="72" as="sourcePoint" /><mxPoint x="95" y="750" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="l2" style="html=1;dashed=1;endArrow=none;strokeColor=#b3b3b3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="300" y="72" as="sourcePoint" /><mxPoint x="300" y="750" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="l3" style="html=1;dashed=1;endArrow=none;strokeColor=#b3b3b3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="72" as="sourcePoint" /><mxPoint x="500" y="750" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="l4" style="html=1;dashed=1;endArrow=none;strokeColor=#b3b3b3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="700" y="72" as="sourcePoint" /><mxPoint x="700" y="750" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="l5" style="html=1;dashed=1;endArrow=none;strokeColor=#b3b3b3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="900" y="72" as="sourcePoint" /><mxPoint x="900" y="750" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="l6" style="html=1;dashed=1;endArrow=none;strokeColor=#b3b3b3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1100" y="72" as="sourcePoint" /><mxPoint x="1100" y="750" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="m1" value="1. buy(orderId, isin, qty) — idempotency key" style="html=1;endArrow=block;strokeColor=#666666;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="95" y="116" as="sourcePoint" /><mxPoint x="300" y="116" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="n1" value="TX1 (local ACID): order = PENDING + outbox record" style="shape=note;whiteSpace=wrap;html=1;size=12;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="310" y="128" width="180" height="36" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m2" value="2. checkContract(customerId)" style="html=1;endArrow=block;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="300" y="194" as="sourcePoint" /><mxPoint x="500" y="194" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="m3" value="3. active agreement + risk profile OK" style="html=1;endArrow=open;dashed=1;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="244" as="sourcePoint" /><mxPoint x="300" y="244" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="n2" value="No agreement / unsuitable ⇒ reject before any money is touched. Cheapest failure — nothing to compensate." style="shape=note;whiteSpace=wrap;html=1;size=12;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="512" y="184" width="180" height="64" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m4" value="4. hold(orderId, amount, ttl)" style="html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="300" y="296" as="sourcePoint" /><mxPoint x="700" y="296" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="n3" value="TX2 (ACID in core): SELECT FOR UPDATE, available = balance − Σ active holds" style="shape=note;whiteSpace=wrap;html=1;size=12;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="712" y="284" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m5" value="5. reservationId" style="html=1;endArrow=open;dashed=1;strokeColor=#d79b00;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="700" y="366" as="sourcePoint" /><mxPoint x="300" y="366" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="m6" value="6. placeOrder(orderId) — idempotent, client order id" style="html=1;endArrow=block;strokeColor=#9673a6;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="300" y="416" as="sourcePoint" /><mxPoint x="900" y="416" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="m7" value="7. accepted" style="html=1;endArrow=open;dashed=1;strokeColor=#9673a6;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="900" y="466" as="sourcePoint" /><mxPoint x="300" y="466" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="n4" value="Timeout ⇒ status UNKNOWN. Never release the hold blindly — poll the broker, then reconcile." style="shape=note;whiteSpace=wrap;html=1;size=12;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="912" y="438" width="180" height="64" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m8" value="8. executed(fill) — async callback, at-least-once" style="html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="900" y="536" as="sourcePoint" /><mxPoint x="300" y="536" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="m9" value="9. settle(reservationId, actualAmount)" style="html=1;endArrow=block;strokeColor=#d79b00;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="300" y="586" as="sourcePoint" /><mxPoint x="700" y="586" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="n5" value="TX3 (ACID in core): debit + close hold in one transaction. Excess released." style="shape=note;whiteSpace=wrap;html=1;size=12;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="712" y="574" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m10" value="10. OrderExecuted event (outbox → Kafka)" style="html=1;endArrow=block;strokeColor=#82b366;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="300" y="656" as="sourcePoint" /><mxPoint x="1100" y="656" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="m11" value="11. position updated (push) — eventual consistency" style="html=1;endArrow=block;dashed=1;strokeColor=#82b366;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1100" y="696" as="sourcePoint" /><mxPoint x="95" y="696" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="m12" value="12. release(reservationId) — compensation: reject / TTL expiry / broker rejection" style="html=1;endArrow=block;dashed=1;strokeColor=#b85450;strokeWidth=2;fontSize=10;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="300" y="736" as="sourcePoint" /><mxPoint x="700" y="736" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="legend2" value="&lt;b&gt;Legend&lt;/b&gt;&#xa;blue — internal synchronous call&#xa;orange — synchronous, ACID inside the bank core&#xa;purple — external broker call, no transaction&#xa;green — asynchronous event, at-least-once + idempotent consumer&#xa;red — compensating action / failure path&#xa;&#xa;No 2PC anywhere. Saga with compensation + nightly reconciliation. Contract is checked first — the cheapest place to fail." style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#cccccc;dashed=1;align=left;spacingLeft=8;fontSize=10;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="20" y="756" width="560" height="55" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

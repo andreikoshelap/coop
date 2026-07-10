@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="540" viewBox="0 0 1120 540" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="540" fill="#ffffff"/>
+
+  <rect x="30" y="180" width="170" height="80" rx="6" fill="#f5f5f5" stroke="#999999"/>
+  <text x="115" y="208" font-size="12" text-anchor="middle" fill="#2c2c2a">Market data provider</text>
+  <text x="115" y="226" font-size="10" text-anchor="middle" fill="#5f5e5a">FIX / FAST / WebSocket</text>
+  <text x="115" y="242" font-size="10" text-anchor="middle" fill="#5f5e5a">paid, licensed per user</text>
+
+  <line x1="200" y1="220" x2="266" y2="220" stroke="#d79b00" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="233" y="204" font-size="10" text-anchor="middle" fill="#854f0b">subscribe</text>
+  <text x="233" y="246" font-size="9" text-anchor="middle" fill="#a32d2d">1 per instrument</text>
+  <text x="233" y="258" font-size="9" text-anchor="middle" fill="#a32d2d">NOT 1 per user</text>
+
+  <rect x="270" y="170" width="190" height="100" rx="6" fill="#dae8fc" stroke="#6c8ebf"/>
+  <text x="365" y="194" font-size="12" text-anchor="middle" fill="#0c447c">Market data service</text>
+  <text x="365" y="212" font-size="10" text-anchor="middle" fill="#185fa5">ACL: normalise ticks</text>
+  <text x="365" y="228" font-size="10" text-anchor="middle" fill="#185fa5">conflation ~300 ms</text>
+  <text x="365" y="244" font-size="10" text-anchor="middle" fill="#185fa5">onBackpressureLatest</text>
+  <text x="365" y="260" font-size="10" text-anchor="middle" fill="#185fa5">last-value cache</text>
+
+  <line x1="460" y1="220" x2="526" y2="220" stroke="#9673a6" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="530" y="170" width="170" height="100" rx="6" fill="#e1d5e7" stroke="#9673a6"/>
+  <text x="615" y="196" font-size="12" text-anchor="middle" fill="#3c3489">Compacted topic</text>
+  <text x="615" y="214" font-size="10" text-anchor="middle" fill="#534ab7">keyed by ISIN</text>
+  <text x="615" y="232" font-size="10" text-anchor="middle" fill="#534ab7">(Kafka / Redis pub-sub)</text>
+  <text x="615" y="254" font-size="9" text-anchor="middle" fill="#534ab7">new instance rebuilds</text>
+  <text x="615" y="265" font-size="9" text-anchor="middle" fill="#534ab7">state without upstream</text>
+
+  <line x1="700" y1="200" x2="766" y2="130" stroke="#82b366" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="220" x2="766" y2="220" stroke="#82b366" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="240" x2="766" y2="310" stroke="#82b366" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="770" y="100" width="160" height="60" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="850" y="124" font-size="12" text-anchor="middle" fill="#173404">Gateway instance 1</text>
+  <text x="850" y="142" font-size="10" text-anchor="middle" fill="#3b6d11">WebFlux, ~10k sockets</text>
+  <rect x="770" y="190" width="160" height="60" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="850" y="214" font-size="12" text-anchor="middle" fill="#173404">Gateway instance 2</text>
+  <text x="850" y="232" font-size="10" text-anchor="middle" fill="#3b6d11">WebFlux, ~10k sockets</text>
+  <rect x="770" y="280" width="160" height="60" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="850" y="304" font-size="12" text-anchor="middle" fill="#173404">Gateway instance N</text>
+  <text x="850" y="322" font-size="10" text-anchor="middle" fill="#3b6d11">WebFlux, ~10k sockets</text>
+
+  <line x1="930" y1="130" x2="986" y2="180" stroke="#666666" marker-end="url(#arrow)"/>
+  <line x1="930" y1="220" x2="986" y2="215" stroke="#666666" marker-end="url(#arrow)"/>
+  <line x1="930" y1="310" x2="986" y2="250" stroke="#666666" marker-end="url(#arrow)"/>
+
+  <rect x="990" y="180" width="110" height="80" rx="6" fill="#f5f5f5" stroke="#999999"/>
+  <text x="1045" y="206" font-size="12" text-anchor="middle" fill="#2c2c2a">Clients</text>
+  <text x="1045" y="224" font-size="10" text-anchor="middle" fill="#5f5e5a">app / net-bank</text>
+  <text x="1045" y="242" font-size="10" text-anchor="middle" fill="#5f5e5a">thousands</text>
+
+  <text x="850" y="370" font-size="10" text-anchor="middle" fill="#3b6d11">WebSocket: in-band subscribe / unsubscribe as the watchlist changes</text>
+  <text x="850" y="386" font-size="10" text-anchor="middle" fill="#3b6d11">on connect: snapshot from LVC, then delta stream</text>
+
+  <rect x="30" y="410" width="670" height="80" rx="6" fill="#fff2cc" stroke="#d6b656"/>
+  <text x="44" y="432" font-size="11" font-weight="600" fill="#633806">The invariant that makes this scale</text>
+  <text x="44" y="452" font-size="10" fill="#854f0b">Upstream subscriptions scale with the instrument catalogue, not with the user count.</text>
+  <text x="44" y="468" font-size="10" fill="#854f0b">10 000 users cost the same upstream as 10. Getting this wrong is a licensing bill, not a latency bug.</text>
+  <text x="44" y="484" font-size="10" fill="#854f0b">Users without a real-time entitlement are served the delayed topic through the identical pipeline.</text>
+
+  <rect x="720" y="410" width="380" height="80" rx="6" fill="#f8cecc" stroke="#b85450"/>
+  <text x="734" y="432" font-size="11" font-weight="600" fill="#501313">Not durable, not authoritative</text>
+  <text x="734" y="452" font-size="10" fill="#a32d2d">A dropped tick is replaced by the next one — no delivery</text>
+  <text x="734" y="468" font-size="10" fill="#a32d2d">guarantee needed. The displayed price is indicative and is</text>
+  <text x="734" y="484" font-size="10" fill="#a32d2d">never used for execution or regulatory reporting.</text>
+</svg>
