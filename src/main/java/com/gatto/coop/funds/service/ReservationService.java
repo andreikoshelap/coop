@@ -7,6 +7,8 @@ import com.gatto.coop.funds.domain.HoldStatus;
 import com.gatto.coop.funds.exception.InsufficientFundsException;
 import com.gatto.coop.funds.repository.AccountHoldRepository;
 import com.gatto.coop.funds.repository.AccountRepository;
+import com.gatto.coop.funds.service.record.ReservationResult;
+import com.gatto.coop.funds.service.record.ReserveCommand;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

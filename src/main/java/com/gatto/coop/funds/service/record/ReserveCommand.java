@@ -1,4 +1,4 @@
-package com.gatto.coop.funds.service;
+package com.gatto.coop.funds.service.record;
 
 import java.math.BigDecimal;
 import java.util.UUID;

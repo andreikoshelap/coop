@@ -2,8 +2,8 @@ package com.gatto.coop.funds.web;
 
 
 import com.gatto.coop.funds.exception.InsufficientFundsException;
-import com.gatto.coop.funds.service.ReserveCommand;
-import com.gatto.coop.funds.service.ReservationResult;
+import com.gatto.coop.funds.service.record.ReserveCommand;
+import com.gatto.coop.funds.service.record.ReservationResult;
 import com.gatto.coop.funds.service.ReservationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;

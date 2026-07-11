@@ -1,4 +1,4 @@
-package com.gatto.coop.funds.service;
+package com.gatto.coop.funds.service.record;
 
 import com.gatto.coop.funds.domain.AccountHold;
 import com.gatto.coop.funds.domain.HoldStatus;
