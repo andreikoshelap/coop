@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/funds
-    username: funds
-    password: funds
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/funds}
+    username: ${DB_USERNAME:funds}
+    password: ${DB_PASSWORD:funds}
   jpa:
     hibernate:
       ddl-auto: validate      # schema is owned by Flyway, never by Hibernate
