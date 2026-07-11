@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/funds
+    username: funds
+    password: funds
+  jpa:
+    hibernate:
+      ddl-auto: validate      # schema is owned by Flyway, never by Hibernate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+    open-in-view: false        # no lazy loading outside a transaction
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug   # see the SELECT ... FOR UPDATE actually happen
