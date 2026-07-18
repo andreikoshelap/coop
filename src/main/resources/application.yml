@@ -16,4 +16,7 @@ spring:
 
 logging:
   level:
-    org.hibernate.SQL: debug   # see the SELECT ... FOR UPDATE actually happen
+    org.hibernate.SQL: warn
+    com.gatto.funds: debug
+    com.gatto.funds.saga.OutboxRelay: debug
+    com.gatto.funds.consumer: debug
