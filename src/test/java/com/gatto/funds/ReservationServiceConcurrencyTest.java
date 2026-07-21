@@ -12,13 +12,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.postgresql.PostgreSQLContainer;
-import org.testcontainers.utility.DockerImageName;
+import org.springframework.context.annotation.Import;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -39,12 +35,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Account #1 starts with 100.00 EUR (see V1__init.sql).
  */
 @SpringBootTest(classes = FundsApplication.class)
-@Testcontainers(disabledWithoutDocker = true)
+@Import(TestcontainersConfiguration.class)
 class ReservationServiceConcurrencyTest {
-
-    @Container
-    @ServiceConnection
-    static PostgreSQLContainer postgres = new PostgreSQLContainer(DockerImageName.parse("postgres:16"));
 
     @DynamicPropertySource
     static void flyway(DynamicPropertyRegistry registry) {

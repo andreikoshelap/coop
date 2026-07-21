@@ -15,13 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Import;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.postgresql.PostgreSQLContainer;
-import org.testcontainers.utility.DockerImageName;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -36,16 +30,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Account #1 starts with 100.00 EUR (V1__init.sql).
  */
 @SpringBootTest(classes = FundsApplication.class)
-@Import(OrderSagaTest.Containers.class)
-@Testcontainers(disabledWithoutDocker = true)
+@Import(TestcontainersConfiguration.class)
 class OrderSagaTest {
-
-    @TestConfiguration(proxyBeanMethods = false)
-    static class Containers {
-        @Container
-        @ServiceConnection
-        static PostgreSQLContainer postgres = new PostgreSQLContainer(DockerImageName.parse("postgres:16"));
-    }
 
     @Autowired
     OrderSagaService saga;
